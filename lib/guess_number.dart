@@ -10,9 +10,9 @@ void main() {
     stdout.write('Play again? (Y/N): ');
     var reply = stdin.readLineSync();
 
-    if (reply == 'y' || reply == "Y") {
+    if (reply == 'y' || reply == 'Y') {
       playgame();
-    } else if (reply == "n" || reply == "N") {
+    } else if (reply == 'n' || reply == 'N') {
       play = true;
     } else {
       continue;
