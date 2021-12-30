@@ -3,7 +3,7 @@ import 'dart:math';
 
 class Game {
   static int max = 100;
-  static int input = max;
+  static var input;
   int? _answer;
   int _count = 0;
   static var countList = <int>[];
