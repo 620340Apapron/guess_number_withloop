@@ -2,16 +2,46 @@ import 'dart:io';
 import 'dart:math';
 
 class Game {
-  static const maxRandoom = 100;
+  static int max = 100;
+  static int input = max;
   int? _answer;
-  var count = 0;
+  int _count = 0;
+  static var countList = <int>[];
+  static var len = countList.length;
 
-  Game() {
-    var r = Random();
-    _answer = r.nextInt(maxRandoom) + 1;
+  Game({int? maxRandom}) {
+    if(maxRandom == null){
+      var r = Random();
+      _answer = r.nextInt(max) + 1;
+    }else{
+      var r = Random();
+      _answer = r.nextInt(maxRandom) + 1;
+      input = maxRandom;
+    }
+
+  }
+
+  void get getList{
+    for (var i = 0; i < countList.length; i++) {
+      print('🚀 Game #${i+1}: ${countList[i]} guesses');
+    }
+  }
+
+  int get getcount{
+    countList.add(_count);
+    return _count;
+  }
+
+  int get maxRan{
+    if(input == null){
+      return max;
+    }else{
+      return input;
+    }
   }
 
   int doGuess(int num) {
+    _count += 1;
     if (num > _answer!) {
       return 1;
     } else if (num < _answer!) {
@@ -19,54 +49,5 @@ class Game {
     } else {
       return 0;
     }
-  }
-
-  void guessCount() {
-    count++;
-  }
-
-  int getCount() {
-    return count;
-  }
-}
-
-class playgame {
-  static const maxRandom = 100;
-  var isCorrect = false;
-
-  playgame() {
-    var game = Game();
-    var count = game.getCount();
-
-    print('╔════════════════════════════════════════');
-    print('║            GUESS THE NUMBER            ');
-    print('╟────────────────────────────────────────');
-
-    do {
-      stdout.write('║ Guess the number between 1 and $maxRandom: ');
-      var input = stdin.readLineSync();
-      var guess = int.tryParse(input!);
-      if (guess == null) {
-        continue;
-      }
-
-      var result = game.doGuess(guess);
-      game.guessCount();
-
-      if (result == 1) {
-        print('║ ➜ $guess is TOO HIGH! ▲');
-        print('╟────────────────────────────────────────');
-      } else if (result == -1) {
-        print('║ ➜ $guess is TOO LOW! ▼');
-        print('╟────────────────────────────────────────');
-      } else {
-        print('║ ➜ $guess is CORRECT ❤, total guesses: $count');
-        print('╟────────────────────────────────────────');
-        isCorrect = true;
-      }
-    } while (!isCorrect);
-
-    print('║                 THE END                ');
-    print('╚════════════════════════════════════════');
   }
 }
