@@ -1,47 +1,26 @@
-import 'dart:io';
 import 'dart:math';
 
 class Game {
-  static int max = 100;
-  static var input;
+  static const defaultMaxRandom = 100;
   int? _answer;
-  int _count = 0;
-  static var countList = <int>[];
-  static var len = countList.length;
+  int _guessCount = 0;
+  static final List<int> guessCountList = [];
 
-  Game({int? maxRandom}) {
-    if(maxRandom == null){
-      var r = Random();
-      _answer = r.nextInt(max) + 1;
-    }else{
-      var r = Random();
-      _answer = r.nextInt(maxRandom) + 1;
-      input = maxRandom;
-    }
-
+  Game({int maxRandom = defaultMaxRandom}) {
+    var r = Random();
+    _answer = r.nextInt(maxRandom) + 1;
   }
 
-  void get getList{
-    for (var i = 0; i < countList.length; i++) {
-      print('🚀 Game #${i+1}: ${countList[i]} guesses');
-    }
+  int get guessCount {
+    return _guessCount;
   }
 
-  int get getcount{
-    countList.add(_count);
-    return _count;
-  }
-
-  int get maxRan{
-    if(input == null){
-      return max;
-    }else{
-      return input;
-    }
+  void addCountList() {
+    guessCountList.add(_guessCount);
   }
 
   int doGuess(int num) {
-    _count += 1;
+    _guessCount++;
     if (num > _answer!) {
       return 1;
     } else if (num < _answer!) {
