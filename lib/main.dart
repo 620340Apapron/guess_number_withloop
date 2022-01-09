@@ -42,39 +42,42 @@ class HomePage extends StatelessWidget {
             ],
           ),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assets/images/guess_logo.png', width: 90.0),
-                    SizedBox(width: 8.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('GUESS',
-                            style: TextStyle(
-                                fontSize: 36.0, color: Colors.green.shade200)),
-                        Text(
-                          'THE NUMBER',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.green.shade600,
-                            //fontWeight: FontWeight.bold,
-                          ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/guess_logo.png', width: 90.0),
+                  SizedBox(width: 8.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'GUESS',
+                        style: TextStyle(
+                          fontSize: 36.0,
+                          color: Colors.green.shade200,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-                ElevatedButton(
-                  child: Text('Guess'),
-                  onPressed: () {},
-                ),
-              ],
+                      ),
+                      Text(
+                        'THE NUMBER',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.green.shade600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              ElevatedButton(
+                child: Text('Guess'),
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
       ),
